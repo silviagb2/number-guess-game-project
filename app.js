@@ -11,19 +11,20 @@ const app = Vue.createApp({
     },
     methods:{
         checkGuess(){
+            this.guessesNumber.push(this.userNumber) 
+            this.remainingGuesses--
+
             if(this.userNumber === this.appNumber){
                 this.checkMessage = "You guessed correctly!"
                 this.show = true
             }
             else if(this.userNumber < this.appNumber){
                 this.checkMessage = "Too low! Try again!"
-                this.guessesNumber.push(this.userNumber) 
-                this.remainingGuesses--
+                this.userNumber = ''
             }
             else{
                 this.checkMessage = "Too high! Try again!" 
-                this.guessesNumber.push(this.userNumber) 
-                this.remainingGuesses--
+                this.userNumber = ''
             }
         },
         endGame(){
