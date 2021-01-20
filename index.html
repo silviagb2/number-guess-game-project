@@ -13,18 +13,22 @@
     <p>You have 10 attempts to guess the right number.</p>
     </br>
     <div id="wrapper">
-        <form class="form">
+        <div class="form">
             <label2 for="guessField" id="guess">Guess a number</label>
-            <input type="text" id="guessField" class="guessField">
-            <input type="submit" id="subt" value="Submit guess" class="guessSubmit">
-        </form>
+            <input type="text" id="guessField" class="guessField" v-model="userNumber" v-on:keyup.enter="checkGuess()">
+            <input type="button" id="subt" value="Submit guess" class="guessSubmit" @click="checkGuess(), endGame()" >
+            </div>
 
         <div class="resultParas">
-            <p >Previous Guesses: <span class="guesses"></span></p>
-            <p >Guesses Remaining: <span class="lastResult">10</span></p>
-            <p class="lowOrHi"></p>
+            <p >Previous Guesses: <span class="guesses"></span>{{guessesNumber.join(' ')}}</p>
+            <p >Guesses Remaining: <span class="lastResult">{{remainingGuesses}}</span></p>
+            <p class="lowOrHi">{{checkMessage}}</p>
+            <p>{{appNumber}}</p>
+            <button v-show="show">Start New Game</button>
         </div>
     </div>
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
+
 </body>
 </html>
