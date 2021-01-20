@@ -20,11 +20,9 @@ const app = Vue.createApp({
             }
             else if(this.userNumber < this.appNumber){
                 this.checkMessage = "Too low! Try again!"
-                this.userNumber = ''
             }
             else{
                 this.checkMessage = "Too high! Try again!" 
-                this.userNumber = ''
             }
         },
         endGame(){
