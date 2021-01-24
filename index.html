@@ -15,7 +15,7 @@
     <div id="wrapper">
         <div class="form">
             <label2 for="guessField" id="guess">Guess a number</label>
-            <input type="text" id="guessField" class="guessField" v-model="userNumber" v-on:keyup.enter="checkGuess()">
+            <input type="text" id="guessField" class="guessField" v-model="userNumber" v-on:keyup.enter="checkGuess(),endGame()">
             <input type="button" id="subt" value="Submit guess" class="guessSubmit" @click="checkGuess(), endGame()" >
             </div>
 
@@ -23,8 +23,7 @@
             <p >Previous Guesses: <span class="guesses"></span>{{guessesNumber.join(' ')}}</p>
             <p >Guesses Remaining: <span class="lastResult">{{remainingGuesses}}</span></p>
             <p class="lowOrHi">{{checkMessage}}</p>
-            <p>{{appNumber}}</p>
-            <button v-show="show">Start New Game</button>
+            <button v-show="show" @click="reset()">Start New Game</button>
         </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>

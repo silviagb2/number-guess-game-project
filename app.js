@@ -1,9 +1,9 @@
 const app = Vue.createApp({
     data(){
         return{
-            appNumber: (Math.random()*100).toFixed(),
+            appNumber: Math.floor(Math.random() * 101),
             userNumber: "",
-            checkMessage: "Hola",
+            checkMessage: "",
             guessesNumber:[],
             remainingGuesses: 10,
             show: false
@@ -14,22 +14,27 @@ const app = Vue.createApp({
             this.guessesNumber.push(this.userNumber) 
             this.remainingGuesses--
 
-            if(this.userNumber === this.appNumber){
+            if(this.userNumber == this.appNumber){
                 this.checkMessage = "You guessed correctly!"
                 this.show = true
             }
             else if(this.userNumber < this.appNumber){
                 this.checkMessage = "Too low! Try again!"
             }
-            else{
-                this.checkMessage = "Too high! Try again!" 
+            else if(this.userNumber > this.appNumber){
+                this.checkMessage = "Too high! Try again!"  
             }
+            
+            return this.userNumber = ""
         },
         endGame(){
             if(this.remainingGuesses == 0){
                 this.checkMessage = `Game Over! Number was ${this.appNumber}`
                 this.show = true
             }
+        },
+        reset(){
+            Object.assign(this.$data, this.$options.data.apply(this))
         }
     }
 })
